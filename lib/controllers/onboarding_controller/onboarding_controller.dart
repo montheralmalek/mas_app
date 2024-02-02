@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 
 abstract class OnBoardinController extends GetxController {
   next();
-  previous();
   onPageChanged(int index);
   onTap(int index);
 }
@@ -15,12 +14,6 @@ class OnBoardingControllerImp extends OnBoardinController {
   @override
   next() {
     pageController.animateToPage(_currentPage + 1,
-        duration: const Duration(milliseconds: 500), curve: Curves.linear);
-  }
-
-  @override
-  previous() {
-    pageController.animateToPage(_currentPage - 1,
         duration: const Duration(milliseconds: 500), curve: Curves.linear);
   }
 

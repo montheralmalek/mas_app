@@ -38,6 +38,9 @@ dependencies:
   get: ^4.6.6
   http: ^1.1.0
   gap: ^3.0.1
+  local_auth: ^2.1.8
+  shared_preferences: ^2.2.2
+  local_auth_android: ^1.0.36
 
 dev_dependencies:
   flutter_test:
