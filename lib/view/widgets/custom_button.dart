@@ -27,15 +27,16 @@ class CustomButton extends StatelessWidget {
       icon: icon ?? const SizedBox(),
       label: text,
       style: ButtonStyle(
-          iconColor: MaterialStateProperty.all(textColor),
-          textStyle: MaterialStateProperty.all(TextStyle(
-            color: textColor,
-          )),
-          backgroundColor: MaterialStateProperty.all(color),
-          shape: MaterialStateProperty.all(
-              RoundedRectangleBorder(borderRadius: borderRadius)),
-          side: MaterialStateProperty.all(borderSide),
-          minimumSize: MaterialStateProperty.all(Size(width, height))),
+        iconColor: MaterialStateProperty.all(textColor),
+        textStyle: MaterialStateProperty.all(TextStyle(
+          color: textColor,
+        )),
+        backgroundColor: MaterialStateProperty.all(color),
+        shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(borderRadius: borderRadius)),
+        side: MaterialStateProperty.all(borderSide),
+        minimumSize: MaterialStateProperty.all(Size(width, height)),
+      ),
     );
   }
 }

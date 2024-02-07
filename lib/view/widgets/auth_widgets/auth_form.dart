@@ -4,10 +4,11 @@ import 'package:get/get.dart';
 import 'package:mas_app/controllers/auth_controller/login_auth_controller.dart';
 import 'package:mas_app/view/widgets/custom_button.dart';
 import 'package:mas_app/view/widgets/custom_textfield.dart';
+import 'package:mas_app/view/widgets/auth_widgets/biometric_auth.dart';
 import 'package:mas_app/view/widgets/password_textfield.dart';
 
-class EmailAuth extends GetView<LoginAuthController> {
-  const EmailAuth({
+class AuthenticationForm extends GetView<LoginAuthController> {
+  const AuthenticationForm({
     super.key,
   });
 
@@ -21,6 +22,14 @@ class EmailAuth extends GetView<LoginAuthController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SizedBox(
+              width: double.infinity,
+              child: Text(
+                'login',
+                style: Theme.of(context).textTheme.headlineLarge,
+              ),
+            ),
+            const Gap(15),
             //**-------------------- Email ---------------- */
             CustomTextFormField(
               //validator: validateEmail,
@@ -32,7 +41,7 @@ class EmailAuth extends GetView<LoginAuthController> {
               radius: 8,
             ),
             //**------------------- Password ---------------- */
-            const Gap(10),
+            //const Gap(10),
             PasswordTextFormField(
               controller: controller.passwordCtrl,
               hinttext: 'password',
@@ -42,12 +51,21 @@ class EmailAuth extends GetView<LoginAuthController> {
             ),
             const Gap(20),
 
-            CustomButton(
-              height: 45,
-              borderRadius: BorderRadius.circular(50),
-              text: const Text('LogIn'),
-              icon: const Icon(Icons.login),
-              onPressed: controller.authenticateWithEmail,
+            Row(
+              children: [
+                Expanded(
+                  child: CustomButton(
+                    height: 45,
+                    borderRadius: BorderRadius.circular(50),
+                    text: const Text('LogIn'),
+                    icon: const Icon(Icons.login),
+                    onPressed: controller.authenticateWithEmail,
+                  ),
+                ),
+                const Expanded(
+                  child: AuthWithBiometrics(),
+                ),
+              ],
             ),
           ],
         ),
