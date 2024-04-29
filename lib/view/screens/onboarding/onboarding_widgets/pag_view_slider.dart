@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mas_app/controllers/onboarding_controller/onboarding_controller.dart';
 import 'package:mas_app/data/sources/static/static.dart';
-import 'package:mas_app/view/widgets/onboarding_widgets/slider_controller_widget.dart';
+import 'package:mas_app/view/screens/onboarding/onboarding_widgets/slider_controller_widget.dart';
 
 class PageViewSlider extends GetView<OnBoardingControllerImp> {
   const PageViewSlider({
@@ -24,6 +24,7 @@ class PageViewSlider extends GetView<OnBoardingControllerImp> {
                 child: Wrap(
                   // direction: Axis.vertical,
                   // verticalDirection: VerticalDirection.up,
+
                   runSpacing: 10,
                   spacing: 10,
                   alignment: WrapAlignment.spaceEvenly,

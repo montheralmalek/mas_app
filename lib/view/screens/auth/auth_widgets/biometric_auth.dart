@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:mas_app/controllers/auth_controller/login_auth_controller.dart';
 import 'package:mas_app/core/constants/image_assets.dart';
 
-class AuthWithBiometrics extends GetView<LoginAuthController> {
+class AuthWithBiometrics extends GetView<LoginController> {
   const AuthWithBiometrics({
     super.key,
   });
@@ -11,7 +11,7 @@ class AuthWithBiometrics extends GetView<LoginAuthController> {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: controller.authenticateWithBiometrics,
+      onPressed: () {}, // controller.authenticateWithBiometrics,
       icon: const Image(
         image: AssetImage(AppImageAssets.fingerprint),
         height: 40,

@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:mas_app/controllers/onboarding_controller/onboarding_controller.dart';
-import 'package:mas_app/view/widgets/onboarding_widgets/continue_button.dart';
+import 'package:mas_app/core/constants/routes.dart';
+import 'package:mas_app/view/screens/onboarding/onboarding_widgets/continue_button.dart';
 
-import '../widgets/onboarding_widgets/pag_view_slider.dart';
+import 'onboarding_widgets/pag_view_slider.dart';
 
 class OnBoardingScreen extends StatelessWidget {
-  static const String id = '/onBoarding';
+  static const String id = RoutesConstanat.onBoarding;
   const OnBoardingScreen({super.key});
 
   @override

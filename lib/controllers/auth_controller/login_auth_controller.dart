@@ -11,37 +11,42 @@ enum SupportState {
   unsupported,
 }
 
-class LoginAuthController extends GetxController {
-  final TextEditingController emailCtrl = TextEditingController();
-  final TextEditingController passwordCtrl = TextEditingController();
-  final GlobalKey<FormState> formKeyState = GlobalKey();
+abstract class AbstractLoginController extends GetxController {
+  void onPressLogin();
+  void onPressFingerPrint();
+  void onTapSignUp();
+  void onTapForgotPassword();
+}
 
+class LoginController extends AbstractLoginController {
+  // final TextEditingController emailCtrl = TextEditingController();
+  // final TextEditingController passwordCtrl = TextEditingController();
+  // @override
+  // final GlobalKey<FormState> formKeyState = GlobalKey();
+  late GlobalKey<FormState> formKeyState;
+  late TextEditingController emailCtrl;
+  late TextEditingController passwordCtrl;
   final LocalAuthentication localAuth = LocalAuthentication();
   SupportState supportState = SupportState.unknown;
   String authorized = 'Not Authorized';
-  void authenticateWithEmail() {
-    // bool authenticated = false;
-    try {
-      if (formKeyState.currentState!.validate()) {
-        // do login
-        if (emailCtrl.text == 'm' && passwordCtrl.text == '1') {
-          showSuccessDialog();
-          _goToHomeScreen();
-        } else {
-          showErrorDialog(title: 'Failed to login');
-        }
-      }
-    } catch (e) {
-      //catch error
-    }
-  }
+  // void authenticateWithEmail() {
+  //   // bool authenticated = false;
+  //   try {
+  //     if (formKeyState.currentState!.validate()) {
+  //       // do login
+  //       if (emailCtrl.text == 'm' && passwordCtrl.text == '1') {
+  //         showSuccessDialog();
+  //         _goToHomeScreen();
+  //       } else {
+  //         showErrorDialog(title: 'Failed to login');
+  //       }
+  //     }
+  //   } catch (e) {
+  //     //catch error
+  //   }
+  // }
 
-  _goToHomeScreen() {}
-  goToSignUpScreen() {
-    Get.toNamed(SignUpScreen.id);
-  }
-
-  goToResetPasswordScreen() {}
+  // _goToHomeScreen() {}
 
   Future<void> _isDeviceSupported() async {
     await localAuth.isDeviceSupported().then((bool isSupported) =>
@@ -92,19 +97,41 @@ class LoginAuthController extends GetxController {
   @override
   void onInit() {
     _isDeviceSupported();
+    formKeyState = GlobalKey();
+    emailCtrl = TextEditingController();
+    passwordCtrl = TextEditingController();
     super.onInit();
   }
 
-  // @override
-  // void onReady() {
-  //   super.onReady();
-  // }
   @override
-  void onClose() {
+  void dispose() {
     emailCtrl.dispose();
     passwordCtrl.dispose();
+    super.dispose();
+  }
 
+  @override
+  void onClose() {
     super.onClose();
+  }
+
+  @override
+  void onPressLogin() {
+    // TODO: implement onPressLogin
+  }
+
+  @override
+  void onTapForgotPassword() {
+    // TODO: implement onTapForgotPassword
+  }
+  @override
+  void onTapSignUp() {
+    Get.offAndToNamed(SignUpScreen.id);
+  }
+
+  @override
+  void onPressFingerPrint() {
+    // TODO: implement onPressFingerPrint
   }
 }
 

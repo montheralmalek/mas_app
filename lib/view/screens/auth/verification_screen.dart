@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mas_app/controllers/auth_controller/verification_controler.dart';
-import 'package:mas_app/view/widgets/auth_widgets/layout_widget.dart';
-import 'package:mas_app/view/widgets/auth_widgets/verification_card.dart';
+import 'package:mas_app/view/screens/auth/auth_widgets/layout_widget.dart';
+import 'package:mas_app/view/screens/auth/auth_widgets/verification_card.dart';
 
 class VerifyEmailScreen extends StatelessWidget {
   const VerifyEmailScreen({super.key});

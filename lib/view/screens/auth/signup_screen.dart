@@ -1,10 +1,19 @@
+// import 'dart:html';
+
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+// import 'package:http/http.dart';
+import 'package:mas_app/controllers/auth_controller/signup_controller.dart';
 import 'package:mas_app/core/constants/image_assets.dart';
-import 'package:mas_app/view/screens/auth/verification_screen.dart';
-import 'package:mas_app/view/widgets/custom_button.dart';
-import 'package:mas_app/view/widgets/custom_textfield.dart';
+// import 'package:mas_app/core/constants/image_assets.dart';
+// import 'package:mas_app/core/constants/layout_const.dart';
+import 'package:mas_app/view/screens/auth/auth_widgets/back_to_login_widget.dart';
+import 'package:mas_app/view/screens/auth/auth_widgets/social_medai_button.dart';
+import 'package:mas_app/view/widgets/horzontal_divider_titled.dart';
+// import 'package:mas_app/view/widgets/horzontal_divider_titled.dart';
+import 'auth_widgets/auth_scaffold.dart';
+import 'auth_widgets/sign_up_form.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -12,81 +21,48 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //Get.put(LoginAuthController());
-    return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(8),
-            child: SizedBox(
-              width: 360,
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Image(
-                      image: AssetImage(AppImageAssets.signUpLogo),
-                      height: 250,
-                    ),
-                    const Gap(10),
-                    SizedBox(
-                      width: double.infinity,
-                      child: Text(
-                        'create account',
-                        style: Theme.of(context).textTheme.headlineLarge,
-                      ),
-                    ),
-                    const Gap(15),
-                    const CustomTextFormField(
-                      //validator: validateEmail,
-                      // controller: controller.emailCtrl,
-                      inputType: TextInputType.name,
-                      // hinttext: 'exampel@ar.com',
-                      labeltext: 'UserName',
-                      prefixicon: Icon(Icons.person_outline),
-                      radius: 8,
-                    ),
-                    const CustomTextFormField(
-                      //validator: validateEmail,
-                      // controller: controller.emailCtrl,
-                      inputType: TextInputType.emailAddress,
-                      hinttext: 'exampel@ar.com',
-                      labeltext: 'Email',
-                      prefixicon: Icon(Icons.email),
-                      radius: 8,
-                    ),
-
-                    const Gap(7),
-                    //**-------------- Login with fingerprint --------------- */
-                    CustomButton(
-                      height: 45,
-                      borderRadius: BorderRadius.circular(50),
-                      text: const Text('sign up'),
-                      icon: const Icon(Icons.app_registration),
-                      onPressed: () {
-                        Get.toNamed(VerifyEmailScreen.id);
-                      },
-                    ),
-
-                    const Divider(
-                      height: 30,
-                      endIndent: 20,
-                      indent: 20,
-                    ),
-                    /////////////----------- sign up ------------//////////////
-                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                      const Text('Already have an account?'),
-                      TextButton(
-                          style: ButtonStyle(
-                              padding:
-                                  MaterialStateProperty.all(EdgeInsets.zero)),
-                          onPressed: () {
-                            Get.back();
-                          },
-                          child: const Text('login'))
-                    ]),
-                  ]),
+    Get.put<SignUpController>(SignUpController());
+    return AuthScaffold(
+      image: AppImageAssets.signUpLogo,
+      title: 'Sign Up',
+      subTitle: 'creat yor account',
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(8),
+        child: Wrap(
+          runSpacing: 10,
+          spacing: 10,
+          alignment: WrapAlignment.spaceEvenly,
+          runAlignment: WrapAlignment.center,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            SocialMediaButton(
+              icon: FontAwesomeIcons.facebook, //Icons.facebook,
+              text: 'Sign up with facebook',
+              iconColor: const Color(0xff1877f2),
+              textColor: Colors.white, width: 250,
+              onTap: () {},
             ),
-          ),
+            SocialMediaButton(
+              icon: FontAwesomeIcons.xTwitter,
+              text: 'Sign up with X',
+              iconColor: const Color(0xff000000),
+              textColor: Colors.white,
+              width: 250,
+              onTap: () {},
+            ),
+            SocialMediaButton(
+              icon: FontAwesomeIcons.googlePlus,
+              text: 'Sign up with google',
+              iconColor: const Color(0xffea4335),
+              textColor: Colors.white,
+              width: 250,
+              onTap: () {},
+            ),
+            const HorzontalDivdierTitled(text: 'or'),
+            const SignUpForm(),
+            const BackToLoginWidget(),
+          ],
         ),
       ),
     );

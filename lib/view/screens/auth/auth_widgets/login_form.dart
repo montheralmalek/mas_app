@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:mas_app/controllers/auth_controller/login_auth_controller.dart';
+import 'package:mas_app/view/screens/auth/auth_widgets/auth_text_form_field.dart';
 import 'package:mas_app/view/widgets/custom_button.dart';
-import 'package:mas_app/view/widgets/custom_textfield.dart';
-import 'package:mas_app/view/widgets/auth_widgets/biometric_auth.dart';
-import 'package:mas_app/view/widgets/password_textfield.dart';
+import 'package:mas_app/view/screens/auth/auth_widgets/biometric_auth.dart';
+import 'package:mas_app/view/screens/auth/auth_widgets/password_textfield.dart';
 
-class AuthenticationForm extends GetView<LoginAuthController> {
-  const AuthenticationForm({
+class LoginForm extends GetView<LoginController> {
+  const LoginForm({
     super.key,
   });
 
@@ -31,19 +31,18 @@ class AuthenticationForm extends GetView<LoginAuthController> {
             ),
             const Gap(15),
             //**-------------------- Email ---------------- */
-            CustomTextFormField(
+            AuthTextFormField(
               //validator: validateEmail,
               controller: controller.emailCtrl,
               inputType: TextInputType.emailAddress,
               hinttext: 'exampel@ar.com',
               labeltext: 'email',
               prefixicon: const Icon(Icons.email),
-              radius: 8,
             ),
             //**------------------- Password ---------------- */
             //const Gap(10),
             PasswordTextFormField(
-              controller: controller.passwordCtrl,
+              textController: controller.passwordCtrl,
               hinttext: 'password',
               labeltext: 'password',
               prefixicon: const Icon(Icons.key),
@@ -59,7 +58,7 @@ class AuthenticationForm extends GetView<LoginAuthController> {
                     borderRadius: BorderRadius.circular(50),
                     text: const Text('LogIn'),
                     icon: const Icon(Icons.login),
-                    onPressed: controller.authenticateWithEmail,
+                    onPressed: controller.onPressLogin,
                   ),
                 ),
                 const Expanded(
